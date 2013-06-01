@@ -10,6 +10,9 @@ class GreetingServiceFactory implements FactoryInterface
 	{
 		$greetingService = new GreetingService();
 
+        $hourProvider = new GreetingService\HourProviderDateFunction();
+        $greetingService->setHourProvider($hourProvider);
+
 		$greetingService->setEventManager(
 			$serviceLocator->get('eventManager')
 		);

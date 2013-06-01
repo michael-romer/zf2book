@@ -11,7 +11,7 @@ class LoggingService implements LoggingServiceInterface
     public function log($str)
     {
         /* Discard log for demo purposes */
-        // return;
+        return;
 
         /* Remove the "return" above for db access demos */
         $adapter = new \Zend\Db\Adapter\Adapter(

@@ -3,9 +3,33 @@ namespace Helloworld;
 
 use Zend\ModuleManager\ModuleManager;
 use Zend\ModuleManager\ModuleEvent;
+use Zend\Console\Adapter\AdapterInterface as Console;
+use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
 
 class Module
 {
+    public function getConsoleBanner(Console $console)
+    {
+        return
+            "==----------------------------------==\n" .
+            "    Helloworld module, Version 1.0    \n" .
+            "==----------------------------------==\n";
+    }
+
+    public function getConsoleUsage(Console $console)
+    {
+        return array(
+            'show date [--format=]'
+                => 'Displays the current datetime.',
+
+            array(
+                '--format=FORMAT',
+                'Supports formatting ' .
+                    'of PHPs "date()" function.'
+            ),
+        );
+    }
+
     /* Examples for using the init method
     public function init(ModuleManager $moduleManager)
     {

@@ -16,7 +16,36 @@ return array(
                         'action'     => 'index',
                     )
                 )
-            )
+            ),
+            'login' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller'    => 'Helloworld\Controller\Auth',
+                        'action'        => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller'    => 'Helloworld\Controller\Auth',
+                        'action'        => 'logout',
+                    ),
+                ),
+            ),
+            'restful-products' => array(
+           		'type'    => 'Literal',
+           		'options' => array(
+           			'route'    => '/rest/product',
+           			'defaults' => array(
+           				'controller'    => 'Helloworld\Controller\Product'
+           			),
+           		),
+           	)
         )
     ),
     'controllers' => array(
@@ -43,7 +72,8 @@ return array(
                 );
 
                 return $ctr;
-            }
+            },
+            'Helloworld\Controller\Auth' => 'Helloworld\Controller\AuthControllerFactory'
         )
     ),
     'service_manager' => array(
@@ -75,9 +105,25 @@ return array(
                 return new \Helloworld\Mapper\Host(
                     $sm->get('Zend\Db\Adapter\Adapter')
                 );
-            }
+            },
+            'Helloworld\Service\AuthService' => 'Helloworld\Service\AuthServiceFactory'
         ),
     ),
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+                'date' => array(
+                    'options' => array(
+                        'route'    => 'show date',
+                        'defaults' => array(
+                            'controller' => 'Helloworld\Controller\Index',
+                            'action'     => 'date'
+                        )
+                    )
+                )
+            )
+        )
+    )
     /* Define view helpers
     'view_helpers' => array(
 		'invokables' => array(
