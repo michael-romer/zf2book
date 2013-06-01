@@ -1,2 +1,3 @@
-local.php
-*.local.php
+# Usually you don't want local files to be added to your repo!
+# local.php
+# *.local.php

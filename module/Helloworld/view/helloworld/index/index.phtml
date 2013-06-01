@@ -1,0 +1,27 @@
+<h1><?php echo $this->greeting; ?></h1>
+<h2><?php echo $this->displayCurrentDate(); ?></h2>
+
+<?php
+$this->form->prepare();
+echo $this->form()->openTag($this->form);
+
+echo $this->formRow($this->form->get('user')
+	->get('name'));
+
+echo $this->formRow($this->form->get('user')
+	->get('email'));
+
+echo $this->formRow($this->form->get('user')
+	->get('userAddress')->get('street'));
+
+echo $this->formRow($this->form->get('user')
+	->get('userAddress')->get('streetNumber'));
+
+echo $this->formRow($this->form->get('user')
+	->get('userAddress')->get('zipcode'));
+
+echo $this->formRow($this->form->get('user')
+	->get('userAddress')->get('city'));
+
+echo $this->formSubmit($this->form->get('submit'));
+echo $this->form()->closeTag();
